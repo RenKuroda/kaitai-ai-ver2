@@ -123,7 +123,7 @@ const App: React.FC = () => {
     setChatMessages([]); 
     setChatError(null);
     try {
-        const systemInstruction = `あなたは親切なAIアシスタントです。ユーザーは提供された画像と特定の指示に基づいて解体見積もりを受け取りました。提供された見積もりは以下の通りです：「${estimateText.substring(0, 1500)}」。あなたの役割は、この特定の見積もりに関するフォローアップの質問に答えることです。簡潔に、見積もり内の点を明確にするか、詳しく説明することに焦点を当ててください。質問が見積もりの範囲外である場合は、丁寧にお知らせください。`;
+        const systemInstruction = `あなたは親切なAIアシスタントです。ユーザーは提供された画像と特定の指示に基づいて解体現場を受け取りました。提供された現場は以下の通りです：「${estimateText.substring(0, 1500)}」。あなたの役割は、この特定の現場情報取得に関するフォローアップの質問に答えることです。簡潔に、現場情報内の点を明確にするか、詳しく説明することに焦点を当ててください。質問が現場情報の範囲外である場合は、丁寧にお知らせください。`;
         
         const newChat = aiInstance.chats.create({
             model: GEMINI_MODEL_NAME,
@@ -181,9 +181,9 @@ const App: React.FC = () => {
     } catch (err) {
       console.error("Error getting estimation:", err);
       if (err instanceof Error) {
-        setError(`見積もり取得中にエラーが発生しました: ${err.message}`);
+        setError(`現調中にエラーが発生しました: ${err.message}`);
       } else {
-        setError("見積もり取得中に不明なエラーが発生しました。");
+        setError("現調中に不明なエラーが発生しました。");
       }
       setEstimationResult(null); 
     } finally {
@@ -273,9 +273,9 @@ const App: React.FC = () => {
       <div className={`w-full max-w-4xl mx-auto p-4 sm:p-8 ${mainContentPaddingBottom}`}>
         <header className="mb-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">
-            解体見積もりAI
+            解体現調AI
           </h1>
-          <p className="mt-2 text-lg text-slate-300">建物の写真をアップロードして、AIによる解体費用見積もりを取得します。</p>
+          <p className="mt-2 text-lg text-slate-300">建物の写真をアップロードして、AIによる解体現場調査をします。</p>
         </header>
 
         <main className="bg-slate-800 shadow-2xl rounded-lg p-6 sm:p-8">
@@ -299,7 +299,7 @@ const App: React.FC = () => {
               className="px-8 py-3 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-semibold rounded-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
               aria-live="polite"
             >
-              {isLoading ? '見積もり中...' : '解体費用を見積もる'}
+              {isLoading ? '現調中...' : '現場調査開始'}
             </button>
             {!aiInstance && !error?.includes("初期化エラー") && !error?.includes("APIキー") && <p className="text-xs text-yellow-400 mt-2">AIサービスの準備中です...</p>}
           </div>
@@ -318,7 +318,7 @@ const App: React.FC = () => {
             <div className="bg-slate-800 shadow-2xl rounded-lg p-6 sm:p-8">
               <div className="flex justify-between items-center mb-4">
                 <h2 id="history-heading" className="text-2xl font-semibold text-sky-400">
-                  見積もり履歴
+                  現場履歴
                 </h2>
                 <button
                   onClick={() => setIsHistoryDetailsVisible(!isHistoryDetailsVisible)}
@@ -347,7 +347,7 @@ const App: React.FC = () => {
                         <button
                         onClick={clearAllHistory}
                         className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-medium rounded-lg shadow-md transition-colors duration-200 ease-in-out"
-                        aria-label="すべての見積もり履歴を削除する"
+                        aria-label="すべての現場履歴を削除する"
                         >
                         全履歴を消去
                         </button>
@@ -402,7 +402,7 @@ const App: React.FC = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-3.862 8.25-8.625 8.25S3.75 16.556 3.75 12s3.862-8.25 8.625-8.25S21 7.444 21 12Z" />
                     </svg>
-                    この見積もりについてAIに質問する
+                    この現場についてAIに質問する
                   </>
                 )}
               </button>
