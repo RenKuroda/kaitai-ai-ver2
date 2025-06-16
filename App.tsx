@@ -275,7 +275,7 @@ const App: React.FC = () => {
           <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-cyan-300">
             解体現調AI
           </h1>
-          <p className="mt-2 text-lg text-slate-300">建物の写真をアップロードして、AIによる解体現場調査をします。</p>
+          <p className="mt-2 text-lg text-slate-300">建物の写真をアップロードして、AIによる解体現場情報を取得します。</p>
         </header>
 
         <main className="bg-slate-800 shadow-2xl rounded-lg p-6 sm:p-8">
@@ -299,7 +299,7 @@ const App: React.FC = () => {
               className="px-8 py-3 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-semibold rounded-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
               aria-live="polite"
             >
-              {isLoading ? '現調中...' : '現場調査開始'}
+              {isLoading ? '現調中...' : '解体費用を見積もる'}
             </button>
             {!aiInstance && !error?.includes("初期化エラー") && !error?.includes("APIキー") && <p className="text-xs text-yellow-400 mt-2">AIサービスの準備中です...</p>}
           </div>
@@ -318,7 +318,7 @@ const App: React.FC = () => {
             <div className="bg-slate-800 shadow-2xl rounded-lg p-6 sm:p-8">
               <div className="flex justify-between items-center mb-4">
                 <h2 id="history-heading" className="text-2xl font-semibold text-sky-400">
-                  現場履歴
+                現場履歴
                 </h2>
                 <button
                   onClick={() => setIsHistoryDetailsVisible(!isHistoryDetailsVisible)}
