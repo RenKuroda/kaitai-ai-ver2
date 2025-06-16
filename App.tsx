@@ -13,7 +13,7 @@ import { generateDemolitionEstimate } from './services/geminiService';
 import { DEMOLITION_ESTIMATE_PROMPT, LOCAL_STORAGE_HISTORY_KEY, MAX_HISTORY_ITEMS, GEMINI_MODEL_NAME } from './constants';
 
 const getApiKeyOrThrow = (): string => {
-  const apiKey = import.meta.env.VITE_OPENAI_API_KEY!;
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY!;
   if (!apiKey) {
     console.error("APIキーが設定されていません。環境変数 API_KEY を設定してください。");
     throw new Error("APIキーが設定されていません。チャット機能は利用できません。");
