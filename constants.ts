@@ -2,6 +2,7 @@
 export const GEMINI_MODEL_NAME = 'gemini-2.5-flash-preview-04-17';
 
 export const DEMOLITION_ESTIMATE_PROMPT = `
+あなたは解体の現場調査を行うプロです！！
 以下の画像は解体予定の建物です。
 これらの画像をもとに、解体費用の見積もり作成に必要な「現場情報の一覧」を以下の6項目に沿って整理してください。
 ※今回は金額の算出は不要です。
