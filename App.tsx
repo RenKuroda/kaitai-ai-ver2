@@ -299,7 +299,7 @@ const App: React.FC = () => {
               className="px-8 py-3 bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-600 hover:to-cyan-600 text-white font-semibold rounded-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
               aria-live="polite"
             >
-              {isLoading ? '現調中...' : '解体費用を見積もる'}
+              {isLoading ? '現調中...' : '解体現場情報取得'}
             </button>
             {!aiInstance && !error?.includes("初期化エラー") && !error?.includes("APIキー") && <p className="text-xs text-yellow-400 mt-2">AIサービスの準備中です...</p>}
           </div>
